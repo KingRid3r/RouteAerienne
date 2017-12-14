@@ -2,6 +2,11 @@ function o=orthodormique(ltA,lgA,ltB,lgB)
     o=acosd(sind(ltA)*sind(ltB)+cosd(ltA)*cosd(ltB)*cosd(lgB-lgA))*60*1.852
 endfunction
 
+function r = route_ortho(ltA, lgA, ltB, lgB)
+    // r=(cosd(ltB)*sind(lgB-lgA))/sind();  // formule papier
+    r=acotd(((cosd(ltA)*sind(ltB))-(sind(ltA)*cosd(ltB)*cosd(lgB-lgA)))/(cosd(ltB)*sind(lgB-lgA)));
+endfunction
+
 function p=saisie()
     txt = ['Latitude   ';'Minutes    ';'Secondes   ';'Longitudes ';'Minutes    '; 'Secondes   '];
     sig = x_mdialog('Coordonnées',txt,['0';'0';'0';'0';'0';'0'])
@@ -25,5 +30,8 @@ function calcule_route_aerienne()
     p2=saisie()
     o=orthodormique(p1(1),p1(2),p2(1),p2(2))
     k=string(o)
-    x_mdialog ('résultat',txt,[k;'ya r '])
+    r=string(route_ortho(p1(1),p1(2),p2(1),p2(2)))
+    x_mdialog ('résultat',txt,[k;r])
 endfunction
+
+
