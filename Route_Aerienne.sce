@@ -31,7 +31,7 @@ function calcule_route_aerienne()
     o=orthodormique(p1(1),p1(2),p2(1),p2(2))
     k=string(o)
     r=string(route_ortho(p1(1),p1(2),p2(1),p2(2)))
-    x_mdialog ('résultat',txt,[k;r])
+    x_mdialog ('résultat',txt,[k+" km";r])
 endfunction
 
 
